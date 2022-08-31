@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  traefik:
+    image: "traefik:latest"
+    container_name: "traefik"
+    networks:
+      - proxy
+    command:
+      # - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080" # Traefik web UI
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  auth:
+    build: .
+    environment:
+      - AUTH_DOMAIN=auth.test.localhost
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.auth.rule=Host(`auth.test.localhost`) || Path(`/simple-forward-auth-login-request`)
+      - traefik.http.routers.auth.entrypoints=web
+      - traefik.http.middlewares.simple-forward-auth.forwardauth.address=http://auth/check
+
+  whoami:
+    image: containous/whoami
+    container_name: "whoami"
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.whoami.rule=Host(`whoami.test.localhost`)
+      - traefik.http.routers.whoami.entrypoints=web
+      - traefik.http.routers.whoami.middlewares=simple-forward-auth
+
+  whoami2:
+    image: containous/whoami
+    container_name: "whoami2"
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.whoami2.rule=Host(`whoami.test2.localhost`)
+      - traefik.http.routers.whoami2.entrypoints=web
+      - traefik.http.routers.whoami2.middlewares=simple-forward-auth
+networks:
+  proxy:
