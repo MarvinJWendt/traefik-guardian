@@ -16,8 +16,7 @@ func main() {
 	authDomain := os.Getenv("AUTH_DOMAIN")
 	engine := html.New("./html", ".html")
 	app := fiber.New(fiber.Config{
-		DisableStartupMessage: true,
-		Views:                 engine,
+		Views: engine,
 	})
 	app.Use(logger.New())
 	store := session.New(session.Config{
