@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MarvinJWendt.dev | SSO Auth</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content">
+        <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
+            <div class="card-body">
+                <div>
+                    <h2 class="card-title text-3xl">MarvinJWendt.dev | Login</h2>
+                </div>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Password</span>
+                    </label>
+                    <input type="password" placeholder="password" class="input input-bordered"/>
+                </div>
+                <div class="form-control mt-6">
+                    <button class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const password = document.querySelector('input[type="password"]');
+    password.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            login();
+        }
+    });
+
+    const loginButton = document.querySelector('button');
+    loginButton.addEventListener('click', login);
+
+    function login() {
+        const sessionID = "{{ .SessionID }}";
+        const callback = "{{ .Callback }}";
+        const password = document.querySelector('input[type="password"]').value;
+
+        // Send password as formdata to the server
+        const formData = new FormData();
+        formData.append('password', password);
+        formData.append('sessionID', sessionID);
+
+        fetch('/login', {
+            method: 'POST',
+            body: formData,
+            credentials: 'include',
+        }).then(response => {
+            if (response.status === 200) {
+                window.location.href = "//" + callback + "/simple-forward-auth-login-request?id=" + sessionID;
+            } else {
+                alert('Wrong password!');
+            }
+        });
+    }
+</script>
+</body>
+</html>

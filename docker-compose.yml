@@ -22,6 +22,7 @@ services:
     build: .
     environment:
       - AUTH_DOMAIN=auth.test.localhost
+      - PASSWORD=test1234
     networks:
       - proxy
     labels:

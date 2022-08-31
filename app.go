@@ -1,17 +1,24 @@
 package main
 
 import (
+	"os"
+	"time"
+
+	"github.com/MarvinJWendt/simple-forward-auth/internal/pkg/auth"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/session"
 	"github.com/gofiber/fiber/v2/utils"
-	"os"
-	"time"
+	"github.com/gofiber/template/html"
 )
 
 func main() {
 	authDomain := os.Getenv("AUTH_DOMAIN")
-	app := fiber.New()
+	engine := html.New("./html", ".html")
+	app := fiber.New(fiber.Config{
+		DisableStartupMessage: true,
+		Views:                 engine,
+	})
 	app.Use(logger.New())
 	store := session.New(session.Config{
 		Expiration:   24 * time.Hour,
@@ -58,15 +65,37 @@ func main() {
 			return err
 		}
 
-		sess.Set("authenticated", true)
-		sess.Save()
+		return c.Render("login", fiber.Map{
+			"Callback":  callback,
+			"SessionID": sess.ID(),
+		})
+	})
 
+	app.Post("/login", func(c *fiber.Ctx) error {
+		password := c.FormValue("password")
+
+		if !auth.CheckPassword(password) {
+			return c.SendStatus(fiber.StatusUnauthorized)
+		}
+
+		sess, err := store.Get(c)
+		if err != nil {
+			return err
+		}
+
+		err = auth.Authenticate(sess)
+		if err != nil {
+			return err
+		}
+
+		// Reload session
 		sess, err = store.Get(c)
 		if err != nil {
 			return err
 		}
 
-		return c.Redirect("//" + callback + "/simple-forward-auth-login-request?id=" + sess.ID())
+		return c.SendStatus(fiber.StatusOK)
+
 	})
 
 	app.Get("/logout", func(c *fiber.Ctx) error {
@@ -75,8 +104,11 @@ func main() {
 			return err
 		}
 
-		sess.Delete("authenticated")
-		sess.Save()
+		err = auth.Unauthenticate(sess)
+		if err != nil {
+			return err
+		}
+
 		return c.SendString("Logged out")
 	})
 
