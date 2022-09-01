@@ -6,8 +6,13 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/session"
 )
 
+var password string
+
 func GetValidPassword() string {
-	return os.Getenv("PASSWORD")
+	if password == "" {
+		password = os.Getenv("PASSWORD")
+	}
+	return password
 }
 
 func CheckPassword(password string) bool {
