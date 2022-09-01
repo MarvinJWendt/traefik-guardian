@@ -40,7 +40,7 @@ func main() {
 		return c.SendString("Authenticated")
 	})
 
-	app.Get("/simple-forward-auth-login-request", func(c *fiber.Ctx) error {
+	app.Get("/simple-forward-auth-session-share", func(c *fiber.Ctx) error {
 		sessionID := c.Query("id")
 		if sessionID == "" {
 			return c.SendStatus(fiber.StatusUnauthorized)
@@ -83,12 +83,6 @@ func main() {
 		}
 
 		err = auth.Authenticate(sess)
-		if err != nil {
-			return err
-		}
-
-		// Reload session
-		sess, err = store.Get(c)
 		if err != nil {
 			return err
 		}

@@ -51,7 +51,6 @@
         // Send password as formdata to the server
         const formData = new FormData();
         formData.append('password', password);
-        formData.append('sessionID', sessionID);
 
         fetch('/login', {
             method: 'POST',
@@ -59,7 +58,9 @@
             credentials: 'include',
         }).then(response => {
             if (response.status === 200) {
-                window.location.href = "//" + callback + "/simple-forward-auth-login-request?id=" + sessionID;
+                setTimeout(() => {
+                    window.location.href = "//" + callback + "/simple-forward-auth-session-share?id=" + sessionID;
+                }, 500);
             } else {
                 alert('Wrong password!');
             }
