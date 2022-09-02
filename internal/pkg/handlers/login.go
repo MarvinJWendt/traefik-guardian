@@ -37,6 +37,10 @@ func LoginRoute(store *session.Store) func(c *fiber.Ctx) error {
 			return err
 		}
 
+		if auth.CheckAuthenticated(sess) {
+			return c.Redirect("//" + callback + "/simple-forward-auth-session-share?id=" + sess.ID())
+		}
+
 		return c.Render("login", fiber.Map{
 			"Callback":  callback,
 			"SessionID": sess.ID(),

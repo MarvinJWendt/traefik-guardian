@@ -1,9 +1,8 @@
-FROM golang:latest as builder
+FROM golang:alpine as builder
 WORKDIR /build
 COPY ./ ./
 RUN go mod download
 RUN CGO_ENABLED=0 go build -o ./main
-
 
 FROM scratch
 WORKDIR /app

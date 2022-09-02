@@ -28,10 +28,12 @@ func main() {
 
 	// Setup session store
 	store := session.New(session.Config{
-		Expiration:   24 * time.Hour,
-		KeyLookup:    "cookie:simple_forward_auth_session_id",
-		CookiePath:   "/",
-		KeyGenerator: utils.UUID,
+		Expiration:     24 * time.Hour,
+		KeyLookup:      "cookie:simple_forward_auth_session_id",
+		CookiePath:     "/",
+		KeyGenerator:   utils.UUID,
+		CookieHTTPOnly: true,
+		CookieSameSite: fiber.CookieSameSiteLaxMode,
 	})
 
 	// Register routes
@@ -39,7 +41,7 @@ func main() {
 	app.Get("/login", handlers.LoginRoute(store))
 	app.Post("/login", handlers.LoginAPI(store))
 	app.Get("/logout", handlers.LogoutRoute(store))
-	app.Get("/simple-forward-auth-session-share", handlers.SessionShareRoute(store))
+	app.Get("/simple-forward-auth-session-share", handlers.SessionShareRoute())
 	app.Get("/check", handlers.CheckRoute(store, authDomain))
 
 	// Start server
