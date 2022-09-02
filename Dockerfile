@@ -5,6 +5,8 @@ COPY ./go.sum ./
 COPY ./src ./src
 RUN go mod download
 RUN CGO_ENABLED=0 go build -ldflags "-s -w" -o ./main ./src/cmd
+RUN apk add upx
+RUN upx --best --lzma main
 
 FROM scratch
 WORKDIR /app
