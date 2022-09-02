@@ -7,9 +7,9 @@
 <tbody>
 <td align="center">
 <img width="2000" height="0"><br>
-<h3>‼️ WORK IN PROGRESS ‼️</h3><br>
-<sub>This project is work in progress and <b>unstable</b>. It's adviced to NOT use it in production in its current state.</sub>
-<sub></sub>
+<h1>‼️ WORK IN PROGRESS ‼️</h3><br>
+<h4>This project is work in progress and <b>unstable</b>. It's adviced to NOT use it in production in its current state.</sub>
+<h4></sub>
 <img width="2000" height="0">
 </td>
 </tbody>
