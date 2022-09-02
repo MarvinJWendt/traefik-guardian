@@ -4,7 +4,7 @@ COPY ./go.mod ./
 COPY ./go.sum ./
 COPY ./src ./src
 RUN go mod download
-RUN CGO_ENABLED=0 go build -o ./main ./src/cmd
+RUN CGO_ENABLED=0 go build -ldflags "-s -w" -o ./main ./src/cmd
 
 FROM scratch
 WORKDIR /app
