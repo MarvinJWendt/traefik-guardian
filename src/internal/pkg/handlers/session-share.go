@@ -1,8 +1,10 @@
 package handlers
 
 import (
-	"github.com/gofiber/fiber/v2"
 	"time"
+
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
+	"github.com/gofiber/fiber/v2"
 )
 
 func SessionShareRoute() func(c *fiber.Ctx) error {
@@ -13,7 +15,7 @@ func SessionShareRoute() func(c *fiber.Ctx) error {
 		}
 
 		c.Cookie(&fiber.Cookie{
-			Name:     "simple_forward_auth_session_id",
+			Name:     auth.SESSION_COOKIE_NAME,
 			Value:    sessionID,
 			Expires:  time.Now().Add(24 * time.Hour),
 			SameSite: fiber.CookieSameSiteLaxMode,

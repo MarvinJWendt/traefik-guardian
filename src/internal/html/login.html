@@ -59,7 +59,7 @@
         }).then(response => {
             if (response.status === 200) {
                 setTimeout(() => {
-                    window.location.href = "//" + callback + "/simple-forward-auth-session-share?id=" + sessionID;
+                    window.location.href = "//" + callback + "/traefik-auth-provider-session-share?id=" + sessionID;
                 }, 500);
             } else {
                 alert('Wrong password!');

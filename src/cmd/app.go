@@ -1,11 +1,13 @@
 package main
 
 import (
-	"github.com/MarvinJWendt/simple-forward-auth/src/internal/pkg/handlers"
-	"github.com/gofiber/fiber/v2"
 	"log"
 	"os"
 	"time"
+
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/handlers"
+	"github.com/gofiber/fiber/v2"
 
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/session"
@@ -29,7 +31,7 @@ func main() {
 	// Setup session store
 	store := session.New(session.Config{
 		Expiration:     24 * time.Hour,
-		KeyLookup:      "cookie:simple_forward_auth_session_id",
+		KeyLookup:      "cookie:" + auth.SESSION_COOKIE_NAME,
 		CookiePath:     "/",
 		KeyGenerator:   utils.UUID,
 		CookieHTTPOnly: true,
@@ -41,7 +43,7 @@ func main() {
 	app.Get("/login", handlers.LoginRoute(store))
 	app.Post("/login", handlers.LoginAPI(store))
 	app.Get("/logout", handlers.LogoutRoute(store))
-	app.Get("/simple-forward-auth-session-share", handlers.SessionShareRoute())
+	app.Get("/traefik-auth-provider-session-share", handlers.SessionShareRoute())
 	app.Get("/check", handlers.CheckRoute(store, authDomain))
 
 	// Start server

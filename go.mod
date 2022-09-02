@@ -1,4 +1,4 @@
-module github.com/MarvinJWendt/simple-forward-auth
+module github.com/MarvinJWendt/traefik-auth-provider
 
 go 1.18
 

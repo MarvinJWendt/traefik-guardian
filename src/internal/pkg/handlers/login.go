@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github.com/MarvinJWendt/simple-forward-auth/src/internal/pkg/auth"
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
 )
@@ -38,7 +38,7 @@ func LoginRoute(store *session.Store) func(c *fiber.Ctx) error {
 		}
 
 		if auth.CheckAuthenticated(sess) {
-			return c.Redirect("//" + callback + "/simple-forward-auth-session-share?id=" + sess.ID())
+			return c.Redirect("//" + callback + "/traefik-auth-provider-session-share?id=" + sess.ID())
 		}
 
 		return c.Render("login", fiber.Map{

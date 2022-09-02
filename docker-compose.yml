@@ -28,9 +28,9 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proxy
-      - traefik.http.routers.auth.rule=Host(`auth.test.localhost`) || Path(`/simple-forward-auth-session-share`)
+      - traefik.http.routers.auth.rule=Host(`auth.test.localhost`) || Path(`/traefik-auth-provider-session-share`)
       - traefik.http.routers.auth.entrypoints=web
-      - traefik.http.middlewares.simple-forward-auth.forwardauth.address=http://auth/check
+      - traefik.http.middlewares.traefik-auth-provider.forwardauth.address=http://auth/check
 
   whoami:
     image: containous/whoami
@@ -42,7 +42,7 @@ services:
       - traefik.docker.network=proxy
       - traefik.http.routers.whoami.rule=Host(`whoami.test.localhost`)
       - traefik.http.routers.whoami.entrypoints=web
-      - traefik.http.routers.whoami.middlewares=simple-forward-auth
+      - traefik.http.routers.whoami.middlewares=traefik-auth-provider
 
   whoami2:
     image: containous/whoami
@@ -54,6 +54,6 @@ services:
       - traefik.docker.network=proxy
       - traefik.http.routers.whoami2.rule=Host(`whoami.test2.localhost`)
       - traefik.http.routers.whoami2.entrypoints=web
-      - traefik.http.routers.whoami2.middlewares=simple-forward-auth
+      - traefik.http.routers.whoami2.middlewares=traefik-auth-provider
 networks:
   proxy:
