@@ -5,6 +5,7 @@
 <img alt="Docker Cloud Build Status" src="https://img.shields.io/docker/cloud/build/marvinjwendt/traefik-auth-provider?style=flat-square">
 <img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/marvinjwendt/traefik-auth-provider/latest?style=flat-square">
 <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/marvinjwendt/traefik-auth-provider?style=flat-square">
+<img alt="GitHub" src="https://img.shields.io/github/license/MarvinJWendt/traefik-auth-provider?style=flat-square">
 </p>
 <p align="center">
 <table>
