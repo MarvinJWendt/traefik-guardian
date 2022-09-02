@@ -1,7 +1,11 @@
-<h1 align="center">Simple Forward Auth</h1>
+<h1 align="center">Traefik Auth Provider 👮</h1>
 
-<p align="center"> A simple forward auth provider for use with <a href="https://traefik.io/traefik/">Traefik</a>.</p>
-
+<p align="center">A simple forward auth provider to protect <a href="https://traefik.io/traefik/">Traefik</a> services with user authentication.</p>
+<p align="center">
+<img alt="Docker Cloud Build Status" src="https://img.shields.io/docker/cloud/build/marvinjwendt/traefik-auth-provider?style=flat-square">
+<img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/marvinjwendt/traefik-auth-provider/latest?style=flat-square">
+<img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/marvinjwendt/traefik-auth-provider?style=flat-square">
+</p>
 <p align="center">
 <table>
 <tbody>
