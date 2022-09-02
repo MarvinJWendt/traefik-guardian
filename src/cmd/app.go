@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/MarvinJWendt/simple-forward-auth/internal/pkg/handlers"
+	"github.com/MarvinJWendt/simple-forward-auth/src/internal/pkg/handlers"
+	"github.com/gofiber/fiber/v2"
 	"log"
 	"os"
 	"time"
 
-	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/session"
 	"github.com/gofiber/fiber/v2/utils"

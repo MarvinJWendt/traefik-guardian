@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github.com/MarvinJWendt/simple-forward-auth/internal/pkg/auth"
+	"github.com/MarvinJWendt/simple-forward-auth/src/internal/pkg/auth"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
 )
