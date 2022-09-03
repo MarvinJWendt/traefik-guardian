@@ -1,4 +1,4 @@
-<h1 align="center">Traefik Auth Provider 👮</h1>
+<p align="center"><img src="https://user-images.githubusercontent.com/31022056/188273308-e301fb31-29d0-4372-a869-a8064716fd09.png" /></p>
 
 <p align="center">A simple forward auth provider to protect <a href="https://traefik.io/traefik/">Traefik</a> services with user authentication.</p>
 <p align="center">
