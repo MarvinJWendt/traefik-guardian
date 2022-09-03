@@ -9,7 +9,8 @@
 <a href="https://github.com/MarvinJWendt/traefik-auth-provider/blob/main/LICENCE"><img alt="GitHub" src="https://img.shields.io/github/license/MarvinJWendt/traefik-auth-provider?style=flat-square"></a>
 </p>
 
-![image](https://user-images.githubusercontent.com/31022056/188274722-40304e18-8b1a-4148-880e-20ca464de678.png)
+![Screenshot](https://user-images.githubusercontent.com/31022056/188274767-91dd3d26-a9c1-4f07-88ae-bb13ab92eee0.png)
+
 
 
 <p align="center">
