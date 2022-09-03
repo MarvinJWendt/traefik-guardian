@@ -9,14 +9,15 @@
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-<div class="hero min-h-screen bg-base-200">
+<div id="particles-js" class="hero min-h-screen bg-base-200">
     <div class="hero-content">
         <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
             <div class="card-body">
                 <div>
-                    <h2 class="card-title text-3xl">MarvinJWendt.dev | Login</h2>
+                    <h2 class="card-title text-2xl lg:text-3xl">Authentication Required</h2>
                 </div>
                 <div class="form-control">
                     <label class="label">
@@ -33,6 +34,10 @@
 </div>
 
 <script>
+    particlesJS.load('particles-js', 'assets/particles.json', function() {
+        console.log('callback - particles.js config loaded');
+    });
+
     const password = document.querySelector('input[type="password"]');
     password.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {

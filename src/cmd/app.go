@@ -46,6 +46,8 @@ func main() {
 	app.Get("/traefik-auth-provider-session-share", handlers.SessionShareRoute())
 	app.Get("/check", handlers.CheckRoute(store, authDomain))
 
+	app.Static("/assets", "./html/assets")
+
 	// Start server
 	log.Fatal(app.Listen(":80"))
 }
