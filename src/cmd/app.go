@@ -8,6 +8,7 @@ import (
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/handlers"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/favicon"
 
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/session"
@@ -27,6 +28,10 @@ func main() {
 
 	// Setup logger
 	app.Use(logger.New())
+
+	app.Use(favicon.New(favicon.Config{
+		File: "./html/assets/favicon.ico",
+	}))
 
 	// Setup session store
 	store := session.New(session.Config{

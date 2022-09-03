@@ -20,10 +20,15 @@
                     <h2 class="card-title text-2xl lg:text-3xl">Authentication Required</h2>
                 </div>
                 <div class="form-control">
-                    <label class="label">
+                    <label for="user" class="label">
+                        <span class="label-text">Username</span>
+                    </label>
+                    <input id="user" type="text" placeholder="username" class="input input-bordered"/>
+
+                    <label for="password" class="label">
                         <span class="label-text">Password</span>
                     </label>
-                    <input type="password" placeholder="password" class="input input-bordered"/>
+                    <input id="password" type="password" placeholder="password" class="input input-bordered"/>
                 </div>
                 <div class="form-control mt-6">
                     <button class="btn btn-primary">Login</button>
