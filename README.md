@@ -33,3 +33,24 @@
 | 📝 Authorization                 | Authorize users with user groups and permissions for separate routes.   |
 | 💙 Conforms to Traefik standards | Traefik Auth Provider uses the same logging format as Traefik is using. |
 | 🚄 Super fast                    | Easily handles hunderts of thousands authorization checks per second.   |
+
+## Getting started
+
+WORK IN PROGRESS
+
+## Configuration
+
+> A YAML file is used to configure the middleware settings, such as users, groups, login page text, etc.
+>
+> Environment variables are used to configure the application itself (debug mode, config file path, etc.).
+
+### YAML Configuration
+
+WORK IN PROGESS
+
+### Environment Variables
+
+| Variable Name | Description              | Default Value |
+|---------------|--------------------------|---------------|
+| `DEBUG`       | Enable debug mode.       |               |
+| `CONFIG_FILE` | Name of the config file. | `config.yml`  |
