@@ -23,3 +23,13 @@
 </tbody>
 </table>
 </p>
+
+## Features
+
+| Feature                          | Description                                                             |
+|----------------------------------|-------------------------------------------------------------------------|
+| 🧸 Easy to use                   | Easy to use and configure.                                              | 
+| 🔒 Authentication                | Authenticate users with username and password.                          |
+| 📝 Authorization                 | Authorize users with user groups and permissions for separate routes.   |
+| 💙 Conforms to Traefik standards | Traefik Auth Provider uses the same logging format as Traefik is using. |
+| 🚄 Super fast                    | Easily handles hunderts of thousands authorization checks per second.   |
