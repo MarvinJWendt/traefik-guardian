@@ -19,10 +19,13 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
   auth:
-    build: .
+    build:
+        context: .
+        dockerfile: Dockerfile.local
     environment:
       - AUTH_DOMAIN=auth.test.localhost
       - PASSWORD=test1234
+      - DEBUG=true
     networks:
       - proxy
     labels:
@@ -31,6 +34,8 @@ services:
       - traefik.http.routers.auth.rule=Host(`auth.test.localhost`) || Path(`/traefik-auth-provider-session-share`)
       - traefik.http.routers.auth.entrypoints=web
       - traefik.http.middlewares.traefik-auth-provider.forwardauth.address=http://auth/check
+    volumes:
+      - "./data:/config"
 
   whoami:
     image: containous/whoami
