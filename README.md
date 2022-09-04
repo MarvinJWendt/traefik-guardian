@@ -50,7 +50,7 @@ WORK IN PROGESS
 
 ### Environment Variables
 
-| Variable Name | Description              | Default Value |
-|---------------|--------------------------|---------------|
-| `DEBUG`       | Enable debug mode.       |               |
-| `CONFIG_FILE` | Name of the config file. | `config.yml`  |
+| Variable Name | Description              | Default Value | Accepted Values   |
+|---------------|--------------------------|---------------|-------------------|
+| `DEBUG`       | Enable debug mode.       | `false`       | `true`, `false`   |
+| `CONFIG_FILE` | Name of the config file. | `config.yml`  | `*.yml`, `*.yaml` |
