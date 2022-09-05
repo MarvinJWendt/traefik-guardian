@@ -7,6 +7,7 @@ import (
 
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/config"
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/db"
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/handlers"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/favicon"
@@ -14,25 +15,33 @@ import (
 	"github.com/gofiber/fiber/v2/utils"
 	"github.com/gofiber/template/html"
 	"github.com/pterm/pterm"
+	"github.com/pterm/pterm/putils"
 	"github.com/sirupsen/logrus"
-	"go.uber.org/zap"
 )
 
 func main() {
 	pterm.DefaultBox.Println(
-		"                Traefik Auth Provider" +
-			"\n" +
-			"https://github.com/MarvinJWendt/traefik-auth-provider",
+		putils.CenterText(
+			"Traefik Auth Provider\n" +
+				"https://github.com/MarvinJWendt/traefik-auth-provider",
+		),
 	)
 
-	logrus.SetLevel(logrus.DebugLevel)
+	time.Sleep(time.Millisecond) // Don't ask why, but this fixes the docker-compose log
+
 	logrus.SetFormatter(&logrus.TextFormatter{})
 
-	logrus.Debug("initializing config ", config.CONFIG_DIR+"/"+config.CONFIG_FILE)
-	err := config.Initzialize()
+	err := config.Initialize()
 	if err != nil {
-		logrus.Fatal("Failed to initialize config", zap.Error(err))
+		logrus.Fatal(err)
 	}
+
+	if config.DEBUG.ToBool() {
+		logrus.SetLevel(logrus.DebugLevel)
+	}
+
+	db.Setup()
+	defer db.Close()
 
 	// Get environment variables
 	authDomain := os.Getenv("AUTH_DOMAIN")

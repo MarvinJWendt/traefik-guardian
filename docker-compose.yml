@@ -35,7 +35,7 @@ services:
       - traefik.http.routers.auth.entrypoints=web
       - traefik.http.middlewares.traefik-auth-provider.forwardauth.address=http://auth/check
     volumes:
-      - "./data:/config"
+      - "./data:/data"
 
   whoami:
     image: containous/whoami

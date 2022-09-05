@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/config"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
 )
@@ -44,6 +45,7 @@ func LoginRoute(store *session.Store) func(c *fiber.Ctx) error {
 		return c.Render("login", fiber.Map{
 			"Callback":  callback,
 			"SessionID": sess.ID(),
+			"Title":     config.LOGIN_PAGE_TITLE.Value,
 		})
 	}
 }

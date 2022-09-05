@@ -40,17 +40,10 @@ WORK IN PROGRESS
 
 ## Configuration
 
-> A YAML file is used to configure the middleware settings, such as users, groups, login page text, etc.
->
-> Environment variables are used to configure the application itself (debug mode, config file path, etc.).
-
-### YAML Configuration
-
-WORK IN PROGESS
+> Environment variables are used to configure the application itself
 
 ### Environment Variables
 
 | Variable Name | Description              | Default Value | Accepted Values   |
 |---------------|--------------------------|---------------|-------------------|
 | `DEBUG`       | Enable debug mode.       | `false`       | `true`, `false`   |
-| `CONFIG_FILE` | Name of the config file. | `config.yml`  | `*.yml`, `*.yaml` |
