@@ -8,9 +8,16 @@ RUN CGO_ENABLED=0 go build -ldflags "-s -w" -o ./main ./src/cmd
 RUN apk add upx
 RUN upx --best --lzma main
 
+FROM node:alpine as ui-builder
+WORKDIR /build
+COPY ./src/admin-ui ./
+RUN corepack pnpm@7.11.0 install
+RUN corepack pnpm@7.11.0 build
+
 FROM scratch
 WORKDIR /app
 COPY --from=builder /build/main ./main
+COPY --from=ui-builder /build/dist /app/admin-ui
 ADD src/internal/html /app/html
 EXPOSE 80
 ENTRYPOINT ["./main"]

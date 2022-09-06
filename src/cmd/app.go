@@ -91,6 +91,8 @@ func main() {
 
 	logrus.Debug("registering static file server for assets")
 	app.Static("/assets", "./html/assets")
+	app.Static("/assets", "./admin-ui/assets")
+	app.Static("/admin", "./admin-ui")
 
 	// Start server
 	logrus.Debug("starting web server")
