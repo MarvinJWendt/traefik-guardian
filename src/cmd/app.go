@@ -43,7 +43,7 @@ func main() {
 		logrus.SetLevel(logrus.DebugLevel)
 	}
 
-	err := db.Setup()
+	err = db.Setup()
 	if err != nil {
 		logrus.Fatal("Failed to set up database: ", err)
 	}
