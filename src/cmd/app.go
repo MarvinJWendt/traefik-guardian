@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"os"
 	"time"
 
@@ -95,5 +94,8 @@ func main() {
 
 	// Start server
 	logrus.Debug("starting web server")
-	log.Fatal(app.Listen(":80"))
+	err = app.Listen(":80")
+	if err != nil {
+		logrus.Fatal("Failed to start web server: ", err)
+	}
 }

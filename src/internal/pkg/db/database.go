@@ -4,7 +4,7 @@ import (
 	"github.com/asdine/storm/v3"
 )
 
-var db *storm.DB
+var db *storm.DB //nolint:varnamelen
 
 type User struct {
 	ID       int    `storm:"id,increment"`

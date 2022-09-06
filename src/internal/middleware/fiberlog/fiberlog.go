@@ -13,7 +13,14 @@ func New() fiber.Handler {
 			return err
 		}
 
-		logrus.Infof("%s | %d | %s %s%s", ctx.IP(), ctx.Response().StatusCode(), ctx.Method(), ctx.Hostname(), ctx.OriginalURL())
+		logrus.Infof(
+			"%s | %d | %s %s%s",
+			ctx.IP(),
+			ctx.Response().StatusCode(),
+			ctx.Method(),
+			ctx.Hostname(),
+			ctx.OriginalURL(),
+		)
 
 		return nil
 	}

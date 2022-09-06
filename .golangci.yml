@@ -16,3 +16,7 @@ linters:
     - gomnd
     - gochecknoglobals
     - gochecknoinits
+    - gofumpt
+    - wsl
+    - nlreturn
+    - funlen
