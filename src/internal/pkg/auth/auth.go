@@ -8,12 +8,13 @@ import (
 
 var password string
 
-const SESSION_COOKIE_NAME = "traefik_auth_provider_session_id"
+const SessionCookieName = "traefik_auth_provider_session_id"
 
 func GetValidPassword() string {
 	if password == "" {
 		password = os.Getenv("PASSWORD")
 	}
+
 	return password
 }
 

@@ -54,14 +54,16 @@ var (
 				return true
 			}
 		}
+
 		return false
 	}
 	ValidateCaseInsensitivePossibleValues = func(v EnvVariable) bool {
 		for _, possibleValue := range v.PossibleValues {
-			if strings.ToLower(v.Value) == strings.ToLower(possibleValue) {
+			if strings.EqualFold(v.Value, possibleValue) {
 				return true
 			}
 		}
+
 		return false
 	}
 )
@@ -85,5 +87,10 @@ func (e ValidationError) Error() string {
 }
 
 func (e ValidationError) String() string {
-	return fmt.Sprintf("invalid value for key '%s': '%s', accepted values: %v", e.KeyName, e.ProvidedValue, e.AcceptedValues)
+	return fmt.Sprintf(
+		"invalid value for key '%s': '%s', accepted values: %v",
+		e.KeyName,
+		e.ProvidedValue,
+		e.AcceptedValues,
+	)
 }

@@ -1,22 +1,25 @@
 package handlers
 
 import (
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
+	"fmt"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
+
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
 )
 
 func CheckRoute(store *session.Store, authDomain string) func(c *fiber.Ctx) error {
-	return func(c *fiber.Ctx) error {
-		sess, err := store.Get(c)
+	return func(ctx *fiber.Ctx) error {
+		sess, err := store.Get(ctx)
 		if err != nil {
-			return err
+			return fmt.Errorf("could not open store: %w", err)
 		}
 
 		if !auth.CheckAuthenticated(sess) {
-			return c.Redirect("//" + authDomain + "/login?callback=" + c.Hostname())
+			return ctx.Redirect("//" + authDomain + "/login?callback=" + ctx.Hostname())
 		}
 
-		return c.SendStatus(fiber.StatusOK)
+		return ctx.SendStatus(fiber.StatusOK)
 	}
 }

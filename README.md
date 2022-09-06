@@ -46,4 +46,4 @@ WORK IN PROGRESS
 
 | Variable Name | Description              | Default Value | Accepted Values   |
 |---------------|--------------------------|---------------|-------------------|
-| `DEBUG`       | Enable debug mode.       | `false`       | `true`, `false`   |
+| `Debug`       | Enable debug mode.       | `false`       | `true`, `false`   |

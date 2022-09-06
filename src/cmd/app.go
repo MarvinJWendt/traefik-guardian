@@ -5,10 +5,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/config"
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/db"
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/handlers"
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/middleware/fiberlog"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/favicon"
 	"github.com/gofiber/fiber/v2/middleware/session"
@@ -17,6 +15,11 @@ import (
 	"github.com/pterm/pterm"
 	"github.com/pterm/pterm/putils"
 	"github.com/sirupsen/logrus"
+
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/config"
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/db"
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/handlers"
 )
 
 func main() {
@@ -33,10 +36,10 @@ func main() {
 
 	err := config.Initialize()
 	if err != nil {
-		logrus.Fatal(err)
+		logrus.Fatal("Failed to initialize config: ", err)
 	}
 
-	if config.DEBUG.ToBool() {
+	if config.Debug.ToBool() {
 		logrus.SetLevel(logrus.DebugLevel)
 	}
 
@@ -56,6 +59,9 @@ func main() {
 		DisableStartupMessage: true,
 	})
 
+	// Setup logrus for fiber
+	app.Use(fiberlog.New())
+
 	logrus.Debug("adding favicon middleware")
 	app.Use(favicon.New(favicon.Config{
 		File: "./html/assets/favicon.ico",
@@ -65,7 +71,7 @@ func main() {
 	logrus.Debug("initializing session store")
 	store := session.New(session.Config{
 		Expiration:     24 * time.Hour,
-		KeyLookup:      "cookie:" + auth.SESSION_COOKIE_NAME,
+		KeyLookup:      "cookie:" + auth.SessionCookieName,
 		CookiePath:     "/",
 		KeyGenerator:   utils.UUID,
 		CookieHTTPOnly: true,
