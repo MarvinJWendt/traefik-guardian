@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/asdine/storm/v3 v3.2.1
 	github.com/gofiber/fiber/v2 v2.37.1
-	github.com/gofiber/template v1.7.0
+	github.com/gofiber/template v1.7.1
 	github.com/pterm/pterm v0.12.46
 	github.com/sirupsen/logrus v1.9.0
 )
