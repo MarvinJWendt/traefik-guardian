@@ -11,8 +11,8 @@ RUN upx --best --lzma main
 FROM node:alpine as ui-builder
 WORKDIR /build
 COPY ./src/admin-ui ./
-RUN corepack pnpm@7.11.0 install
-RUN corepack pnpm@7.11.0 build
+RUN npm install
+RUN npm run build
 
 FROM scratch
 WORKDIR /app
