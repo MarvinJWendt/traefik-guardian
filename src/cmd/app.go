@@ -15,6 +15,7 @@ import (
 	"github.com/pterm/pterm/putils"
 	"github.com/sirupsen/logrus"
 
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/api"
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/config"
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/db"
@@ -88,6 +89,14 @@ func main() {
 	app.Get("/logout", handlers.LogoutRoute(store))
 	app.Get("/traefik-auth-provider-session-share", handlers.SessionShareRoute())
 	app.Get("/check", handlers.CheckRoute(store, authDomain))
+
+	// API routes
+	apiGroup := app.Group("/api")
+	v1 := apiGroup.Group("/v1")
+	v1.Post("/users/add", api.AddUser())
+	v1.Get("/users/get", api.GetUsers())
+	v1.Delete("/users/delete", api.DeleteUser())
+	v1.Get("/authenticated", api.Authenticated(store))
 
 	logrus.Debug("registering static file server for assets")
 	app.Static("/assets", "./html/assets")
