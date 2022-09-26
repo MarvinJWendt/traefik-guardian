@@ -22,14 +22,22 @@ var (
 	LoginPageTitle = EnvVariable{
 		Name:           "LOGIN_PAGE_TITLE",
 		Required:       false,
-		DefaultValue:   "Traefik Auth Provider | Login",
+		DefaultValue:   "Traefik Guardian | Login",
 		PossibleValues: []string{"*"},
 		Validator:      ValidateAny,
+	}
+
+	Passwords = EnvVariable{
+		Name:           "PASSWORDS",
+		Required:       true,
+		DefaultValue:   "",
+		PossibleValues: []string{"*"},
+		Validator:      ValidateNotEmptyString,
 	}
 )
 
 func Initialize() error {
-	var envVariables = []*EnvVariable{&Debug, &AuthDomain, &LoginPageTitle}
+	var envVariables = []*EnvVariable{&Debug, &AuthDomain, &LoginPageTitle, &Passwords}
 
 	for _, variable := range envVariables {
 		err := variable.Validate()

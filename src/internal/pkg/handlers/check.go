@@ -16,6 +16,14 @@ func CheckRoute(store *session.Store, authDomain string) func(c *fiber.Ctx) erro
 			return fmt.Errorf("could not open store: %w", err)
 		}
 
+		if ctx.GetReqHeaders()["Guardian-Password"] != "" {
+			if !auth.CheckPassword(ctx.GetReqHeaders()["Guardian-Password"]) {
+				return ctx.SendStatus(fiber.StatusUnauthorized)
+			}
+
+			return ctx.SendStatus(fiber.StatusOK)
+		}
+
 		if !auth.IsAuthenticated(sess) {
 			return ctx.Redirect("//" + authDomain + "/login?callback=" + ctx.Hostname())
 		}

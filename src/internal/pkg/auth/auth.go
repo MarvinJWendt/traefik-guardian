@@ -1,25 +1,28 @@
 package auth
 
 import (
-	"os"
+	"strings"
 
+	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/config"
 	"github.com/gofiber/fiber/v2/middleware/session"
 )
 
-var password string
-
 const SessionCookieName = "traefik_guardian_session_id"
 
-func GetValidPassword() string {
-	if password == "" {
-		password = os.Getenv("PASSWORD")
-	}
-
-	return password
+func GetValidPasswords() []string {
+	passwordsRaw := config.Passwords.String()
+	return strings.Split(passwordsRaw, "|")
 }
 
 func CheckPassword(password string) bool {
-	return password == GetValidPassword()
+	validPasswords := GetValidPasswords()
+	for _, validPassword := range validPasswords {
+		if password == validPassword {
+			return true
+		}
+	}
+
+	return false
 }
 
 func Authenticate(session *session.Session) error {
