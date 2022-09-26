@@ -21,3 +21,4 @@ linters:
     - nlreturn
     - funlen
     - varnamelen
+    - gosec
