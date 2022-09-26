@@ -53,8 +53,8 @@ _Full example soon._
 
 | Variable Name      | Description                              | Default Value              | Accepted Values                                 |
 |--------------------|------------------------------------------|----------------------------|-------------------------------------------------|
-| `AUTH_HOST`        | The host to use.                         | ``                         | Any valid host (e.g.: `auth.example.com`)       |
-| `PASSWORDS`        | The passwords that can be used to login. | ``                         | See [Password Management](#password-management) |
+| `AUTH_HOST`        | The host to use.                         |                            | Any valid host (e.g.: `auth.example.com`)       |
+| `PASSWORDS`        | The passwords that can be used to login. |                            | See [Password Management](#password-management) |
 | `DEBUG`            | Enable debug mode.                       | `false`                    | `true`, `false`                                 |
 | `LOGIN_PAGE_TITLE` | Title of the login page.                 | `Traefik Guardian - Login` | Any string.                                     |
 
@@ -85,4 +85,4 @@ The header name is `Guardian-Password` and the value should be one of your confi
 ---
 
 > [MarvinJWendt.com](https://marvinjwendt.com) &nbsp;&middot;&nbsp;
-> Twitter [@MarvinJWendt](https://twitter.com/MarvinJWendt) &nbsp;&middot;&nbsp;
+> Twitter [@MarvinJWendt](https://twitter.com/MarvinJWendt)
