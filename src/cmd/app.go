@@ -4,7 +4,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/middleware/fiberlog"
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/middleware/fiberlog"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/favicon"
@@ -15,16 +15,16 @@ import (
 	"github.com/pterm/pterm/putils"
 	"github.com/sirupsen/logrus"
 
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/config"
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/handlers"
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/auth"
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/config"
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/handlers"
 )
 
 func main() {
 	pterm.DefaultBox.Println(
 		putils.CenterText(
 			"Traefik Auth Provider\n" +
-				"https://github.com/MarvinJWendt/traefik-auth-provider",
+				"https://github.com/MarvinJWendt/traefik-guardian",
 		),
 	)
 

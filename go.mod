@@ -1,4 +1,4 @@
-module github.com/MarvinJWendt/traefik-auth-provider
+module github.com/MarvinJWendt/traefik-guardian
 
 go 1.18
 

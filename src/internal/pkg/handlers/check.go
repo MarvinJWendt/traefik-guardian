@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
 
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/auth"
 )
 
 func CheckRoute(store *session.Store, authDomain string) func(c *fiber.Ctx) error {

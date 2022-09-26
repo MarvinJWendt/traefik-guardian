@@ -24,16 +24,15 @@ services:
         dockerfile: Dockerfile.local
     environment:
       - AUTH_DOMAIN=auth.test.localhost
-      - PASSWORDS=test1234|test1337
+      - PASSWORDS=plaintext:test1234|test1337
       - DEBUG=true
     networks:
       - proxy
     labels:
       - traefik.enable=true
-      - traefik.docker.network=proxy
       - traefik.http.routers.auth.rule=Host(`auth.test.localhost`) || Path(`/traefik-guardian-session-share`)
       - traefik.http.routers.auth.entrypoints=web
-      - traefik.http.middlewares.traefik-auth-provider.forwardauth.address=http://auth/check
+      - traefik.http.middlewares.traefik-guardian.forwardauth.address=http://auth/check
 
   whoami:
     image: containous/whoami
@@ -45,7 +44,7 @@ services:
       - traefik.docker.network=proxy
       - traefik.http.routers.whoami.rule=Host(`whoami.test.localhost`)
       - traefik.http.routers.whoami.entrypoints=web
-      - traefik.http.routers.whoami.middlewares=traefik-auth-provider
+      - traefik.http.routers.whoami.middlewares=traefik-guardian
 
   whoami2:
     image: containous/whoami
@@ -57,6 +56,6 @@ services:
       - traefik.docker.network=proxy
       - traefik.http.routers.whoami2.rule=Host(`whoami.test2.localhost`)
       - traefik.http.routers.whoami2.entrypoints=web
-      - traefik.http.routers.whoami2.middlewares=traefik-auth-provider
+      - traefik.http.routers.whoami2.middlewares=traefik-guardian
 networks:
   proxy:

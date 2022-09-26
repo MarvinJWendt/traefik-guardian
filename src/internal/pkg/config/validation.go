@@ -42,6 +42,8 @@ func (v *EnvVariable) Validate() error {
 }
 
 var (
+	SupportedAlgorithms = []string{"plaintext"}
+
 	ValidateNotEmptyString = func(v EnvVariable) bool {
 		return v.Value != ""
 	}
@@ -65,6 +67,31 @@ var (
 		}
 
 		return false
+	}
+
+	ValidatePasswords = func(v EnvVariable) bool {
+		// Schema: "algorithm:pass1|pass2|pass3"
+		passwordsRaw := v.Value
+		algorithm := strings.Split(passwordsRaw, ":")[0]
+		passwords := strings.Split(strings.Split(passwordsRaw, ":")[1], "|")
+
+		algoSupported := false
+		for _, possibleValue := range SupportedAlgorithms {
+			if algorithm == possibleValue {
+				algoSupported = true
+			}
+		}
+		if !algoSupported {
+			return false
+		}
+
+		for _, password := range passwords {
+			if password == "" {
+				return false
+			}
+		}
+
+		return true
 	}
 )
 

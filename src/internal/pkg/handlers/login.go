@@ -4,8 +4,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
 
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/config"
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/auth"
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/config"
 )
 
 func LoginAPI(store *session.Store) func(c *fiber.Ctx) error {

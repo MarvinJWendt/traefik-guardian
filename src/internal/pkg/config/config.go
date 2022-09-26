@@ -31,8 +31,8 @@ var (
 		Name:           "PASSWORDS",
 		Required:       true,
 		DefaultValue:   "",
-		PossibleValues: []string{"*"},
-		Validator:      ValidateNotEmptyString,
+		PossibleValues: []string{"algorithm:pass1|pass2|pass3"},
+		Validator:      ValidatePasswords,
 	}
 )
 

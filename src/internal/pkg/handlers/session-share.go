@@ -5,7 +5,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/auth"
 )
 
 func SessionShareRoute() func(c *fiber.Ctx) error {

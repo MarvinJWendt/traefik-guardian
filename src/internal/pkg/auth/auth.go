@@ -3,19 +3,22 @@ package auth
 import (
 	"strings"
 
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/config"
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/config"
 	"github.com/gofiber/fiber/v2/middleware/session"
 )
 
 const SessionCookieName = "traefik_guardian_session_id"
 
-func GetValidPasswords() []string {
+func GetValidPasswords() (string, []string) {
+	// Schema: "algorithm:pass1|pass2|pass3"
 	passwordsRaw := config.Passwords.String()
-	return strings.Split(passwordsRaw, "|")
+	algorithm := strings.Split(passwordsRaw, ":")[0]
+	passwords := strings.Split(strings.Split(passwordsRaw, ":")[1], "|")
+	return algorithm, passwords
 }
 
 func CheckPassword(password string) bool {
-	validPasswords := GetValidPasswords()
+	_, validPasswords := GetValidPasswords()
 	for _, validPassword := range validPasswords {
 		if password == validPassword {
 			return true
