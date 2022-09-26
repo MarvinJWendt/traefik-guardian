@@ -20,3 +20,4 @@ linters:
     - wsl
     - nlreturn
     - funlen
+    - varnamelen
