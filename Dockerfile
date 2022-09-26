@@ -17,7 +17,7 @@ RUN npm run build
 FROM scratch
 WORKDIR /app
 COPY --from=builder /build/main ./main
-COPY --from=ui-builder /build/dist /app/admin-ui
+COPY --from=ui-builder /build/build /app/admin-ui
 ADD src/internal/html /app/html
 EXPOSE 80
 ENTRYPOINT ["./main"]
