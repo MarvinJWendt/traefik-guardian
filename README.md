@@ -9,7 +9,7 @@
 <a href="https://github.com/MarvinJWendt/traefik-guardian/blob/main/LICENCE"><img alt="GitHub" src="https://img.shields.io/github/license/MarvinJWendt/traefik-guardian?style=flat-square"></a>
 </p>
 
-![Screenshot](https://user-images.githubusercontent.com/31022056/188281754-ebe3e6f8-b92c-4155-8683-896ad8e86c65.png)
+![Screenshot](https://user-images.githubusercontent.com/31022056/192390005-428ff759-8a11-4e54-ba97-1c390e4bd1ed.png)
 
 <p align="center">
 <table>
