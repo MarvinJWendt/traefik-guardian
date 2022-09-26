@@ -20,11 +20,6 @@
                     <h2 class="card-title text-2xl lg:text-3xl">Authentication Required</h2>
                 </div>
                 <div class="form-control">
-                    <label for="user" class="label">
-                        <span class="label-text">Username</span>
-                    </label>
-                    <input id="user" type="text" placeholder="username" class="input input-bordered"/>
-
                     <label for="password" class="label">
                         <span class="label-text">Password</span>
                     </label>
@@ -69,7 +64,7 @@
         }).then(response => {
             if (response.status === 200) {
                 setTimeout(() => {
-                    window.location.href = "//" + callback + "/traefik-auth-provider-session-share?id=" + sessionID;
+                    window.location.href = "//" + callback + "/traefik-guardian-session-share?id=" + sessionID;
                 }, 500);
             } else {
                 alert('Wrong password!');

@@ -8,7 +8,7 @@ import (
 
 var password string
 
-const SessionCookieName = "traefik_auth_provider_session_id"
+const SessionCookieName = "traefik_guardian_session_id"
 
 func GetValidPassword() string {
 	if password == "" {
@@ -31,6 +31,6 @@ func Unauthenticate(session *session.Session) error {
 	return session.Destroy()
 }
 
-func CheckAuthenticated(session *session.Session) bool {
+func IsAuthenticated(session *session.Session) bool {
 	return session.Get("authenticated") != nil
 }

@@ -39,8 +39,8 @@ func LoginRoute(store *session.Store) func(c *fiber.Ctx) error {
 			return err
 		}
 
-		if auth.CheckAuthenticated(sess) {
-			return ctx.Redirect("//" + callback + "/traefik-auth-provider-session-share?id=" + sess.ID())
+		if auth.IsAuthenticated(sess) {
+			return ctx.Redirect("//" + callback + "/traefik-guardian-session-share?id=" + sess.ID())
 		}
 
 		return ctx.Render("login", fiber.Map{

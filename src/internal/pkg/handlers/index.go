@@ -14,7 +14,7 @@ func IndexRoute(store *session.Store) func(c *fiber.Ctx) error {
 			return err
 		}
 
-		if !auth.CheckAuthenticated(sess) {
+		if !auth.IsAuthenticated(sess) {
 			return ctx.SendString("Not authenticated")
 		}
 

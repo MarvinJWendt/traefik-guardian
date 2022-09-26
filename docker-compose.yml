@@ -31,7 +31,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proxy
-      - traefik.http.routers.auth.rule=Host(`auth.test.localhost`) || Path(`/traefik-auth-provider-session-share`)
+      - traefik.http.routers.auth.rule=Host(`auth.test.localhost`) || Path(`/traefik-guardian-session-share`)
       - traefik.http.routers.auth.entrypoints=web
       - traefik.http.middlewares.traefik-auth-provider.forwardauth.address=http://auth/check
     volumes:

@@ -15,10 +15,8 @@ import (
 	"github.com/pterm/pterm/putils"
 	"github.com/sirupsen/logrus"
 
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/api"
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/auth"
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/config"
-	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/db"
 	"github.com/MarvinJWendt/traefik-auth-provider/src/internal/pkg/handlers"
 )
 
@@ -42,12 +40,6 @@ func main() {
 	if config.Debug.ToBool() {
 		logrus.SetLevel(logrus.DebugLevel)
 	}
-
-	err = db.Setup()
-	if err != nil {
-		logrus.Fatal("Failed to set up database: ", err)
-	}
-	defer db.Close()
 
 	// Get environment variables
 	authDomain := os.Getenv("AUTH_DOMAIN")
@@ -87,16 +79,8 @@ func main() {
 	app.Get("/login", handlers.LoginRoute(store))
 	app.Post("/login", handlers.LoginAPI(store))
 	app.Get("/logout", handlers.LogoutRoute(store))
-	app.Get("/traefik-auth-provider-session-share", handlers.SessionShareRoute())
+	app.Get("/traefik-guardian-session-share", handlers.SessionShareRoute())
 	app.Get("/check", handlers.CheckRoute(store, authDomain))
-
-	// API routes
-	apiGroup := app.Group("/api")
-	v1 := apiGroup.Group("/v1")
-	v1.Post("/users/add", api.AddUser())
-	v1.Get("/users/get", api.GetUsers())
-	v1.Delete("/users/delete", api.DeleteUser())
-	v1.Get("/authenticated", api.Authenticated(store))
 
 	logrus.Debug("registering static file server for assets")
 	app.Static("/assets", "./html/assets")
