@@ -82,7 +82,7 @@ var (
 		passwords := strings.Split(strings.Split(passwordsRaw, ":")[1], "|")
 
 		algoSupported := false
-		for possibleValue, _ := range SupportedAlgorithms {
+		for possibleValue := range SupportedAlgorithms {
 			if algorithm == possibleValue {
 				algoSupported = true
 			}
