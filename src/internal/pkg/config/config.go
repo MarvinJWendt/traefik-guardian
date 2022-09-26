@@ -11,8 +11,8 @@ var (
 		Validator:      ValidateCaseInsensitivePossibleValues,
 	}
 
-	AuthDomain = EnvVariable{
-		Name:           "AUTH_DOMAIN",
+	AuthHost = EnvVariable{
+		Name:           "AUTH_HOST",
 		Required:       true,
 		DefaultValue:   "",
 		PossibleValues: []string{"*"},
@@ -22,7 +22,7 @@ var (
 	LoginPageTitle = EnvVariable{
 		Name:           "LOGIN_PAGE_TITLE",
 		Required:       false,
-		DefaultValue:   "Traefik Guardian | Login",
+		DefaultValue:   "Traefik Guardian - Login",
 		PossibleValues: []string{"*"},
 		Validator:      ValidateAny,
 	}
@@ -37,7 +37,7 @@ var (
 )
 
 func Initialize() error {
-	var envVariables = []*EnvVariable{&Debug, &AuthDomain, &LoginPageTitle, &Passwords}
+	var envVariables = []*EnvVariable{&Debug, &AuthHost, &LoginPageTitle, &Passwords}
 
 	for _, variable := range envVariables {
 		err := variable.Validate()

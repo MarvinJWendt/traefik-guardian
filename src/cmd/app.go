@@ -1,7 +1,6 @@
 package main
 
 import (
-	"os"
 	"time"
 
 	"github.com/MarvinJWendt/traefik-guardian/src/internal/middleware/fiberlog"
@@ -23,7 +22,7 @@ import (
 func main() {
 	pterm.DefaultBox.Println(
 		putils.CenterText(
-			"Traefik Auth Provider\n" +
+			"Traefik Guardian\n" +
 				"https://github.com/MarvinJWendt/traefik-guardian",
 		),
 	)
@@ -40,9 +39,6 @@ func main() {
 	if config.Debug.ToBool() {
 		logrus.SetLevel(logrus.DebugLevel)
 	}
-
-	// Get environment variables
-	authDomain := os.Getenv("AUTH_DOMAIN")
 
 	// Setup html templating
 	logrus.Debug("initializing html templating")
@@ -80,7 +76,7 @@ func main() {
 	app.Post("/login", handlers.LoginAPI(store))
 	app.Get("/logout", handlers.LogoutRoute(store))
 	app.Get("/traefik-guardian-session-share", handlers.SessionShareRoute())
-	app.Get("/check", handlers.CheckRoute(store, authDomain))
+	app.Get("/check", handlers.CheckRoute(store))
 
 	logrus.Debug("registering static file server for assets")
 	app.Static("/assets", "./html/assets")

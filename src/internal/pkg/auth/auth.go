@@ -18,9 +18,10 @@ func GetValidPasswords() (string, []string) {
 }
 
 func CheckPassword(password string) bool {
-	_, validPasswords := GetValidPasswords()
+	algo, validPasswords := GetValidPasswords()
+
 	for _, validPassword := range validPasswords {
-		if password == validPassword {
+		if config.SupportedAlgorithms[algo].Check(validPassword, password) {
 			return true
 		}
 	}

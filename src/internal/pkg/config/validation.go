@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/secure"
 )
 
 type EnvVariable struct {
@@ -42,7 +44,11 @@ func (v *EnvVariable) Validate() error {
 }
 
 var (
-	SupportedAlgorithms = []string{"plaintext"}
+	SupportedAlgorithms = map[string]secure.HashResolver{
+		"plaintext": &secure.PlaintextResolver{},
+		"bcrypt":    &secure.BcryptResolver{},
+		"md5":       &secure.MD5Resolver{},
+	}
 
 	ValidateNotEmptyString = func(v EnvVariable) bool {
 		return v.Value != ""
@@ -76,7 +82,7 @@ var (
 		passwords := strings.Split(strings.Split(passwordsRaw, ":")[1], "|")
 
 		algoSupported := false
-		for _, possibleValue := range SupportedAlgorithms {
+		for possibleValue, _ := range SupportedAlgorithms {
 			if algorithm == possibleValue {
 				algoSupported = true
 			}

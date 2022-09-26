@@ -3,13 +3,14 @@ package handlers
 import (
 	"fmt"
 
+	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/config"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
 
 	"github.com/MarvinJWendt/traefik-guardian/src/internal/pkg/auth"
 )
 
-func CheckRoute(store *session.Store, authDomain string) func(c *fiber.Ctx) error {
+func CheckRoute(store *session.Store) func(c *fiber.Ctx) error {
 	return func(ctx *fiber.Ctx) error {
 		sess, err := store.Get(ctx)
 		if err != nil {
@@ -25,7 +26,7 @@ func CheckRoute(store *session.Store, authDomain string) func(c *fiber.Ctx) erro
 		}
 
 		if !auth.IsAuthenticated(sess) {
-			return ctx.Redirect("//" + authDomain + "/login?callback=" + ctx.Hostname())
+			return ctx.Redirect("//" + config.AuthHost.String() + "/login?callback=" + ctx.Hostname())
 		}
 
 		return ctx.SendStatus(fiber.StatusOK)

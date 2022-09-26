@@ -23,13 +23,15 @@ services:
         context: .
         dockerfile: Dockerfile.local
     environment:
-      - AUTH_DOMAIN=auth.test.localhost
+      - AUTH_HOST=auth.test.localhost
       - PASSWORDS=plaintext:test1234|test1337
+      # - PASSWORDS=bcrypt:$$2a$$12$$/n4Bb2g0YsW6rL9d0f2VquHkhl.iSaV88FOGiu5FEYXCEPW2Sl9yy|$$2a$$12$$UoUJQcz5W5wm9A98N4GC7.X.7x398zMl6Y/T5Vjycc.gel/xBzSGm
       - DEBUG=true
     networks:
       - proxy
     labels:
       - traefik.enable=true
+      - traefik.docker.network=proxy
       - traefik.http.routers.auth.rule=Host(`auth.test.localhost`) || Path(`/traefik-guardian-session-share`)
       - traefik.http.routers.auth.entrypoints=web
       - traefik.http.middlewares.traefik-guardian.forwardauth.address=http://auth/check

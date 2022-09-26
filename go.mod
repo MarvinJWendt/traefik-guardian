@@ -3,7 +3,6 @@ module github.com/MarvinJWendt/traefik-guardian
 go 1.18
 
 require (
-	github.com/asdine/storm/v3 v3.2.1
 	github.com/gofiber/fiber/v2 v2.37.1
 	github.com/gofiber/template v1.7.1
 	github.com/pterm/pterm v0.12.46
@@ -25,7 +24,7 @@ require (
 	github.com/valyala/fasthttp v1.40.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778 // indirect
-	go.etcd.io/bbolt v1.3.6 // indirect
+	golang.org/x/crypto v0.0.0-20220926161630-eccd6366d1be // indirect
 	golang.org/x/sys v0.0.0-20220829200755-d48e67d00261 // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.3.7 // indirect
