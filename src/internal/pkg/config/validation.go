@@ -48,6 +48,7 @@ var (
 		"plaintext": &secure.PlaintextResolver{},
 		"bcrypt":    &secure.BcryptResolver{},
 		"md5":       &secure.MD5Resolver{},
+		"sha512":    &secure.SHA512Resolver{},
 	}
 
 	ValidateNotEmptyString = func(v EnvVariable) bool {

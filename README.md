@@ -72,6 +72,7 @@ Example: `plaintext:pass1|pass2|pass3`
 | `plaintext` | No tool needed - just plain text passwords.                                                                                                                       |
 | `bcrypt`    | You can use [Cyber Chef](https://gchq.github.io/CyberChef/#recipe=Bcrypt(12)) to generate your bcrypt hash. You need to escape every `$` with another one (`$$`). |
 | `md5`       | You can use [Cyber Chef](https://gchq.github.io/CyberChef/#recipe=MD5()) to generate your md5 hash.                                                               |
+| `sha512`    | You can use [Cyber Chef](https://gchq.github.io/CyberChef/#recipe=SHA2('512',64,1)) to generate your md5 hash.                                                    |
 
 more to come...
 
