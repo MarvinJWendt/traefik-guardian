@@ -61,19 +61,18 @@ You can find a full example, including Traefik and a demo service, here: [_examp
 
 ### Environment Variables
 
-| Variable Name      | Description                              | Default Value              | Accepted Values                                 |
-|--------------------|------------------------------------------|----------------------------|-------------------------------------------------|
-| `AUTH_HOST`        | The host to use.                         |                            | Any valid host (e.g.: `auth.example.com`)       |
-| `PASSWORDS`        | The passwords that can be used to login. |                            | See [Password Management](#password-management) |
-| `DEBUG`            | Enable debug mode.                       | `false`                    | `true`, `false`                                 |
-| `LOGIN_PAGE_TITLE` | Title of the login page.                 | `Traefik Guardian - Login` | Any string.                                     |
+| Variable Name      | Description                              | Accepted Values                                 | Default Value              |
+|--------------------|------------------------------------------|-------------------------------------------------|----------------------------|
+| `AUTH_HOST`        | The host to use.                         | Any valid host (e.g.: `auth.example.com`)       |                            |
+| `PASSWORDS`        | The passwords that can be used to login. | See [Password Management](#password-management) |                            |
+| `DEBUG`            | Enable debug mode.                       | `true`, `false`                                 | `false`                    |
+| `LOGIN_PAGE_TITLE` | Title of the login page.                 | Any string.                                     | `Traefik Guardian - Login` |
 
 ## Password Management
 
 > Passwords are stored in the `PASSWORDS` environment variable.
 
-The `PASSWORDS` environment variable is a separated list of passwords, prepended with the used algorithm. The seperator is a pipe (`|`).  
-Example: `plaintext:pass1|pass2|pass3`
+The `PASSWORDS` environment variable is separated list of passwords, prepended with the used algorithm. Example: `plaintext:pass1|pass2|pass3`
 
 #### Supported Algorithms
 
