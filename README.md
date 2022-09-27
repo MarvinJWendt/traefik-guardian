@@ -3,10 +3,10 @@
 <p align="center">A simple forward auth provider to protect <a href="https://traefik.io/traefik/">Traefik</a> services with user authentication.</p>
 
 <p align="center">
-<a href="https://hub.docker.com/r/marvinjwendt/traefik-guardian"><img alt="Docker Cloud Build Status" src="https://img.shields.io/docker/cloud/build/marvinjwendt/traefik-guardian?style=flat-square"></a>
-<a href="https://hub.docker.com/r/marvinjwendt/traefik-guardian"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/marvinjwendt/traefik-guardian/latest?style=flat-square"></a>
-<a href="https://hub.docker.com/r/marvinjwendt/traefik-guardian"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/marvinjwendt/traefik-guardian?style=flat-square"></a>
-<a href="https://github.com/MarvinJWendt/traefik-guardian/blob/main/LICENCE"><img alt="GitHub" src="https://img.shields.io/github/license/MarvinJWendt/traefik-guardian?style=flat-square"></a>
+<a href="https://hub.docker.com/r/marvinjwendt/traefik-guardian"><img alt="Docker Cloud Build Status" src="https://img.shields.io/docker/cloud/build/marvinjwendt/traefik-guardian?style=for-the-badge"></a>
+<a href="https://hub.docker.com/r/marvinjwendt/traefik-guardian"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/marvinjwendt/traefik-guardian/latest?style=for-the-badge"></a>
+<a href="https://hub.docker.com/r/marvinjwendt/traefik-guardian"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/marvinjwendt/traefik-guardian?style=for-the-badge"></a>
+<a href="https://github.com/MarvinJWendt/traefik-guardian/blob/main/LICENCE"><img alt="GitHub" src="https://img.shields.io/github/license/MarvinJWendt/traefik-guardian?style=for-the-badge"></a>
 </p>
 
 ![Screenshot](https://user-images.githubusercontent.com/31022056/192390005-428ff759-8a11-4e54-ba97-1c390e4bd1ed.png)
