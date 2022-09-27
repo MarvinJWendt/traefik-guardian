@@ -13,14 +13,15 @@
 
 ## Features
 
-| Feature                           | Description                                                                                               |
-|-----------------------------------|-----------------------------------------------------------------------------------------------------------|
-| 🧸 Easy to use                    | Dead simple to use! No config files, no external dependencies, no setup. One single command to deploy.    | 
-| 🔒 Authentication                 | Authenticate users with a password.                                                                       |
-| 📝 Authorization                  | Authorize users to use services behind the Traefik proxy.                                                 |
-| 💙 Conforms to Traefik standards  | Traefik Guardian implements Traefik Forward Auth. It also uses the same logging format as Traefik itself. |
-| 🚄 Super fast                     | Easily handles hunderts of thousands authorization checks per second.                                     |
-| 🤖 Header Authorization           | Authorize requests by passing the token in a header, to make guarded API connections possible.            |
+| Feature                          | Description                                                                                               |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------|
+| 🧸 Easy to use                   | Dead simple to use! No config files, no external dependencies, no setup. One single command to deploy.    | 
+| 🔒 Authentication                | Authenticate users with a password.                                                                       |
+| 📝 Authorization                 | Authorize users to use services behind the Traefik proxy.                                                 |
+| 🔀 Cross Domain Support          | Authorizes across domains and sub-domains. A single login for everything.                                 |
+| 🤖 Header Authorization          | Authorize requests by passing the token in a header, to make guarded API connections possible.            |
+| 🚄 Super fast                    | Easily handles hunderts of thousands authorization checks per second.                                     |
+| 💙 Conforms to Traefik standards | Traefik Guardian implements Traefik Forward Auth. It also uses the same logging format as Traefik itself. |
 
 ## Getting started
 
