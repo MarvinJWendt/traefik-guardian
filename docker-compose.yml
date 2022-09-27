@@ -7,7 +7,7 @@ services:
     networks:
       - proxy
     command:
-      # - "--log.level=DEBUG"
+      - "--log.level=DEBUG"
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
@@ -18,14 +18,14 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
-  auth:
+  traefik-guardian:
     build:
-        context: .
+      context: .
     environment:
+      - DEBUG=true
       - AUTH_HOST=auth.test.localhost
       - PASSWORDS=plaintext:test1234|test1337
       # - PASSWORDS=bcrypt:$$2a$$12$$/n4Bb2g0YsW6rL9d0f2VquHkhl.iSaV88FOGiu5FEYXCEPW2Sl9yy|$$2a$$12$$UoUJQcz5W5wm9A98N4GC7.X.7x398zMl6Y/T5Vjycc.gel/xBzSGm
-      - DEBUG=true
     networks:
       - proxy
     labels:
@@ -33,7 +33,7 @@ services:
       - traefik.docker.network=proxy
       - traefik.http.routers.auth.rule=Host(`auth.test.localhost`) || Path(`/traefik-guardian-session-share`)
       - traefik.http.routers.auth.entrypoints=web
-      - traefik.http.middlewares.traefik-guardian.forwardauth.address=http://auth/check
+      - traefik.http.middlewares.traefik-guardian.forwardauth.address=http://traefik-guardian/auth
 
   whoami:
     image: containous/whoami

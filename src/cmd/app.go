@@ -76,7 +76,7 @@ func main() {
 	app.Post("/login", handlers.LoginAPI(store))
 	app.Get("/logout", handlers.LogoutRoute(store))
 	app.Get("/traefik-guardian-session-share", handlers.SessionShareRoute())
-	app.Get("/check", handlers.CheckRoute(store))
+	app.Get("/auth", handlers.CheckRoute(store))
 
 	logrus.Debug("registering static file server for assets")
 	app.Static("/assets", "./html/assets")

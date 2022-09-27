@@ -26,24 +26,23 @@
 
 ### Docker Compose
 
-_Full example soon._
-
 ```yaml
-  auth:
-    image: marvinjwendt/traefik-guardian
+  traefik-guardian: # Your traefik-guardian service
+    image: marvinjwendt/traefik-guardian:latest
     environment:
-      - AUTH_HOST=auth.example.com
-      - PASSWORDS=plaintext:test1234|test1337
-      # - PASSWORDS=bcrypt:$$2a$$12$$/n4Bb2g0YsW6rL9d0f2VquHkhl.iSaV88FOGiu5FEYXCEPW2Sl9yy|$$2a$$12$$UoUJQcz5W5wm9A98N4GC7.X.7x398zMl6Y/T5Vjycc.gel/xBzSGm
+      - AUTH_HOST=auth.test.localhost # Replace with your auth host (e.g.: auth.example.com).
+      - PASSWORDS=plaintext:test1234|test1337 # Replace with your passwords. See the docs for more info at: https://github.com/MarvinJWendt/traefik-guardian#password-management
     networks:
-      - proxy # your traefik network
+      - proxy
     labels:
       - traefik.enable=true
-      - traefik.docker.network=proxy # your traefik proxy
+      - traefik.docker.network=proxy
       - traefik.http.routers.auth.entrypoints=web
-      - traefik.http.routers.auth.rule=Host(`auth.example.com`) || Path(`/traefik-guardian-session-share`)
-      - traefik.http.middlewares.traefik-guardian.forwardauth.address=http://auth/check # Make sure the domain is the service name
+      - traefik.http.routers.auth.rule=Host(`auth.test.localhost`) || Path(`/traefik-guardian-session-share`) # Replace auth.test.localhost with your auth host defined above.
+      - traefik.http.middlewares.traefik-guardian.forwardauth.address=http://traefik-guardian/auth
 ```
+
+You can find a full example, including Traefik and a demo service, here: [_examples/full](./_examples/full)
 
 ## Configuration
 
@@ -73,8 +72,6 @@ Example: `plaintext:pass1|pass2|pass3`
 | `bcrypt`    | You can use [Cyber Chef](https://gchq.github.io/CyberChef/#recipe=Bcrypt(12)) to generate your bcrypt hash. You need to escape every `$` with another one (`$$`). |
 | `md5`       | You can use [Cyber Chef](https://gchq.github.io/CyberChef/#recipe=MD5()) to generate your md5 hash.                                                               |
 | `sha512`    | You can use [Cyber Chef](https://gchq.github.io/CyberChef/#recipe=SHA2('512',64,1)) to generate your md5 hash.                                                    |
-
-more to come...
 
 ## Authorization via Header
 
