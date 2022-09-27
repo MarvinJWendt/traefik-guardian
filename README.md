@@ -76,12 +76,12 @@ The `PASSWORDS` environment variable is separated list of passwords, prepended w
 
 #### Supported Algorithms
 
-| Algorithm   | Tool to generate hash                                                                                                                                             |
-|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `plaintext` | No tool needed - just plain text passwords.                                                                                                                       |
-| `bcrypt`    | You can use [Cyber Chef](https://gchq.github.io/CyberChef/#recipe=Bcrypt(12)) to generate your bcrypt hash. You need to escape every `$` with another one (`$$`). |
-| `md5`       | You can use [Cyber Chef](https://gchq.github.io/CyberChef/#recipe=MD5()) to generate your md5 hash.                                                               |
-| `sha512`    | You can use [Cyber Chef](https://gchq.github.io/CyberChef/#recipe=SHA2('512',64,1)) to generate your md5 hash.                                                    |
+| Algorithm   | Tool to generate hash                                                                                                                                                                                                                                                                                                      |
+|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `plaintext` | No tool needed - just plain text passwords.                                                                                                                                                                                                                                                                                |
+| `bcrypt`    | You can use [CyberChef](https://gchq.github.io/CyberChef/#recipe=Bcrypt(10)Find_/_Replace(%7B'option':'Simple%20string','string':'$'%7D,'$$$$',true,false,false,false)&input=WW91ciBQYXNzd29yZA) to generate your bcrypt hash. You need to escape every `$` with another one (the CyberChef link does this automatically). |
+| `md5`       | You can use [CyberChef](https://gchq.github.io/CyberChef/#recipe=MD5()) to generate your md5 hash.                                                                                                                                                                                                                         |
+| `sha512`    | You can use [CyberChef](https://gchq.github.io/CyberChef/#recipe=SHA2('512',64,1)) to generate your md5 hash.                                                                                                                                                                                                              |
 
 ## Authorization via Header
 
