@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/gofiber/fiber/v2 v2.38.1
 	github.com/gofiber/template v1.7.1
-	github.com/pterm/pterm v0.12.46
+	github.com/pterm/pterm v0.12.47
 	github.com/sirupsen/logrus v1.9.0
 	golang.org/x/crypto v0.0.0-20220926161630-eccd6366d1be
 )
@@ -15,12 +15,11 @@ require (
 	atomicgo.dev/keyboard v0.2.8 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/containerd/console v1.0.3 // indirect
-	github.com/gookit/color v1.5.0 // indirect
+	github.com/gookit/color v1.5.2 // indirect
 	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/lithammer/fuzzysearch v1.1.5 // indirect
 	github.com/mattn/go-runewidth v0.0.13 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
-	github.com/stretchr/testify v1.8.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.40.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
