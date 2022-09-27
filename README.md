@@ -42,6 +42,16 @@
       - traefik.http.middlewares.traefik-guardian.forwardauth.address=http://traefik-guardian/auth
 ```
 
+## Valid Tags
+
+| Tag    | Description                                                            |
+|--------|------------------------------------------------------------------------|
+| latest | The latest stable release.                                             |
+| edge   | The latest commit on the main branch.                                  |
+| x      | A specific major version. Update all non-breaking changes. (e.g.: `1`) |
+| x.x    | A specific minor version. Only update patches (e.g.: `1.2`)            |
+| x.x.x  | A specific release. (e.g.: `1.2.3`)                                    |
+
 You can find a full example, including Traefik and a demo service, here: [_examples/full](./_examples/full)
 
 ## Configuration
@@ -57,7 +67,7 @@ You can find a full example, including Traefik and a demo service, here: [_examp
 | `DEBUG`            | Enable debug mode.                       | `false`                    | `true`, `false`                                 |
 | `LOGIN_PAGE_TITLE` | Title of the login page.                 | `Traefik Guardian - Login` | Any string.                                     |
 
-### Password Management
+## Password Management
 
 > Passwords are stored in the `PASSWORDS` environment variable.
 
