@@ -21,7 +21,6 @@ services:
   auth:
     build:
         context: .
-        dockerfile: Dockerfile.local
     environment:
       - AUTH_HOST=auth.test.localhost
       - PASSWORDS=plaintext:test1234|test1337
