@@ -12,6 +12,7 @@ func (s *SHA512Resolver) Check(h string, password string) bool {
 }
 
 func GetSHA512Hash(text string) string {
-	hash := sha512.New().Sum([]byte(text))
-	return hex.EncodeToString(hash)
+	hasher := sha512.New()
+	hasher.Write([]byte(text))
+	return hex.EncodeToString(hasher.Sum(nil))
 }
