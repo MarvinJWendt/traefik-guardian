@@ -7,6 +7,7 @@ import (
 )
 
 func TestHashes(t *testing.T) {
+	t.Parallel()
 	tests := []struct {
 		hashResolver HashResolver
 		password     string
@@ -32,6 +33,7 @@ func TestHashes(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.password, func(t *testing.T) {
+			t.Parallel()
 			b := tt.hashResolver
 			testza.AssertEqual(t, b.Check(tt.hash, tt.password), tt.shouldMatch, "Test: %#v", tt)
 		})
