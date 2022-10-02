@@ -22,3 +22,6 @@ linters:
     - funlen
     - varnamelen
     - gosec
+    - testpackage
+    - lll
+    - paralleltest
