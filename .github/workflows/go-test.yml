@@ -28,7 +28,7 @@ jobs:
         run: go get -v -t -d ./...
 
       - name: Build
-        run: go build -v ./src
+        run: go build -v ./src/cmd
 
       - name: Test
         run: go test ./src/...
