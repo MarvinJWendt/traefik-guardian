@@ -2,6 +2,7 @@ name: Build
 
 on:
   push:
+    branches: [ main ]
   pull_request:
 
 jobs:
@@ -27,7 +28,7 @@ jobs:
         run: go get -v -t -d ./...
 
       - name: Build
-        run: go build -v .
+        run: go build -v ./src
 
       - name: Test
-        run: go test .
+        run: go test ./src/...
