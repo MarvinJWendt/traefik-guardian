@@ -47,7 +47,7 @@ func LoginRoute(store *session.Store) func(c *fiber.Ctx) error {
 			"Callback":  callback,
 			"SessionID": sess.ID(),
 			"Title":     config.LoginPageTitle.Value,
-			"Copyright": config.LoginPageCopyright.Value,
+			"FooterText": config.LoginPageFooterText.Value,
 		})
 	}
 }
