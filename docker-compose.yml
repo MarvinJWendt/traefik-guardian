@@ -25,6 +25,7 @@ services:
       - DEBUG=true
       - AUTH_HOST=auth.test.localhost
       - PASSWORDS=plaintext:test1234|test1337
+      # - LOGIN_PAGE_COPYRIGHT=Copyright © 2022 - Custom Corp.
       # - PASSWORDS=bcrypt:$$2a$$12$$/n4Bb2g0YsW6rL9d0f2VquHkhl.iSaV88FOGiu5FEYXCEPW2Sl9yy|$$2a$$12$$UoUJQcz5W5wm9A98N4GC7.X.7x398zMl6Y/T5Vjycc.gel/xBzSGm
     networks:
       - proxy

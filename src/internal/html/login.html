@@ -1,114 +1,130 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ .Title }}</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-          integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
-<body>
-<div id="particles-js" class="hero min-h-screen bg-base-200">
-    <div class="flex flex-col">
-        <div class="hero-content">
-            <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-                <div class="card-body">
-                    <div>
-                        <h2 class="card-title text-2xl lg:text-3xl">Authentication Required</h2>
-                    </div>
-                    <div id="wrong-password-message" style="display: none;" class="animate__animated animate__delay-5 flex-shrink-0 w-full max-w-lg alert alert-warning shadow-lg mt-4 animate__fadeIn">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                                 viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                            </svg>
-                            <span>Wrong password!</span>
-                        </div>
-                    </div>
-                    <div class="form-control">
-                        <label for="password" class="label">
-                            <span class="label-text">Password</span>
-                        </label>
-                        <input id="password" type="password" placeholder="password" class="input input-bordered"/>
 
-                    </div>
-                    <div class="form-control mt-4">
-                        <button class="btn btn-primary">Login</button>
+<body>
+    <div>
+
+        <div id="particles-js" class="hero min-h-screen bg-base-200">
+            <div class="flex flex-col">
+                <div class="hero-content">
+                    <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
+                        <div class="card-body">
+                            <div>
+                                <h2 class="card-title text-2xl lg:text-3xl">Authentication Required</h2>
+                            </div>
+                            <div id="wrong-password-message" style="display: none;"
+                                class="animate__animated animate__delay-5 flex-shrink-0 w-full max-w-lg alert alert-warning shadow-lg mt-4 animate__fadeIn">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6"
+                                        fill="none" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                    </svg>
+                                    <span>Wrong password!</span>
+                                </div>
+                            </div>
+                            <div class="form-control">
+                                <label for="password" class="label">
+                                    <span class="label-text">Password</span>
+                                </label>
+                                <input id="password" type="password" placeholder="password"
+                                    class="input input-bordered" />
+
+                            </div>
+                            <div class="form-control mt-4">
+                                <button class="btn btn-primary">Login</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <footer class="footer items-center p-4 bg-neutral text-neutral-content">
+            <div class="items-center grid-flow-col">
+                <a href="https://github.com/MarvinJWendt/traefik-guardian" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/logo.svg" width="36" height="36" class="fill-current" />
+                </a>
+                <p>{{ .Copyright }}</p>
+            </div>
+        </footer>
     </div>
-</div>
 
-<script>
-    particlesJS.load('particles-js', 'assets/particles.json', function () {
-        console.log('callback - particles.js config loaded');
-    });
+    <script>
+        particlesJS.load('particles-js', 'assets/particles.json', function () {
+            console.log('callback - particles.js config loaded');
+        });
 
-    const password = document.querySelector('input[type="password"]');
-    password.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-            login();
-        }
-    });
-
-    const loginButton = document.querySelector('button');
-    loginButton.addEventListener('click', login);
-
-    function showWrongPasswordMessage() {
-        const wrongPasswordMessage = document.getElementById('wrong-password-message');
-        wrongPasswordMessage.classList.remove('animate__fadeOut');
-        wrongPasswordMessage.classList.add('animate__fadeIn');
-        wrongPasswordMessage.style.display = 'block';
-    }
-
-    function hideWrongPasswordMessage() {
-        const wrongPasswordMessage = document.getElementById('wrong-password-message');
-        // Fade element out
-        wrongPasswordMessage.classList.remove('animate__fadeIn');
-        wrongPasswordMessage.classList.add('animate__fadeOut');
-        setTimeout(() => {
-            wrongPasswordMessage.style.display = 'none';
-        }, 1000);
-    }
-
-    function displayWrongPasswordMessage() {
-        showWrongPasswordMessage();
-        setTimeout(hideWrongPasswordMessage, 3000);
-    }
-
-    function login() {
-        const sessionID = "{{ .SessionID }}";
-        const callback = "{{ .Callback }}";
-        const password = document.querySelector('input[type="password"]').value;
-
-        // Send password as formdata to the server
-        const formData = new FormData();
-        formData.append('password', password);
-
-        fetch('/login', {
-            method: 'POST',
-            body: formData,
-            credentials: 'include',
-        }).then(response => {
-            if (response.status === 200) {
-                setTimeout(() => {
-                    window.location.href = "//" + callback + "/traefik-guardian-session-share?id=" + sessionID;
-                }, 500);
-            } else {
-                displayWrongPasswordMessage()
+        const password = document.querySelector('input[type="password"]');
+        password.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                login();
             }
         });
-    }
-</script>
+
+        const loginButton = document.querySelector('button');
+        loginButton.addEventListener('click', login);
+
+        function showWrongPasswordMessage() {
+            const wrongPasswordMessage = document.getElementById('wrong-password-message');
+            wrongPasswordMessage.classList.remove('animate__fadeOut');
+            wrongPasswordMessage.classList.add('animate__fadeIn');
+            wrongPasswordMessage.style.display = 'block';
+        }
+
+        function hideWrongPasswordMessage() {
+            const wrongPasswordMessage = document.getElementById('wrong-password-message');
+            // Fade element out
+            wrongPasswordMessage.classList.remove('animate__fadeIn');
+            wrongPasswordMessage.classList.add('animate__fadeOut');
+            setTimeout(() => {
+                wrongPasswordMessage.style.display = 'none';
+            }, 1000);
+        }
+
+        function displayWrongPasswordMessage() {
+            showWrongPasswordMessage();
+            setTimeout(hideWrongPasswordMessage, 3000);
+        }
+
+        function login() {
+            const sessionID = "{{ .SessionID }}";
+            const callback = "{{ .Callback }}";
+            const password = document.querySelector('input[type="password"]').value;
+
+            // Send password as formdata to the server
+            const formData = new FormData();
+            formData.append('password', password);
+
+            fetch('/login', {
+                method: 'POST',
+                body: formData,
+                credentials: 'include',
+            }).then(response => {
+                if (response.status === 200) {
+                    setTimeout(() => {
+                        window.location.href = "//" + callback + "/traefik-guardian-session-share?id=" + sessionID;
+                    }, 500);
+                } else {
+                    displayWrongPasswordMessage()
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>
