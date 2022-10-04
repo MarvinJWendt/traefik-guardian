@@ -27,6 +27,14 @@ var (
 		Validator:      ValidateAny,
 	}
 
+	LoginPageFooterText = EnvVariable{
+		Name:           "LOGIN_PAGE_FOOTER_TEXT",
+		Required:       false,
+		DefaultValue:   "Copyright © 2022 - Traefik Guardian",
+		PossibleValues: []string{"*"},
+		Validator:      ValidateAny,
+	}
+
 	Passwords = EnvVariable{
 		Name:           "PASSWORDS",
 		Required:       true,
@@ -37,7 +45,7 @@ var (
 )
 
 func Initialize() error {
-	var envVariables = []*EnvVariable{&Debug, &AuthHost, &LoginPageTitle, &Passwords}
+	var envVariables = []*EnvVariable{&Debug, &AuthHost, &LoginPageTitle, &LoginPageFooterText, &Passwords}
 
 	for _, variable := range envVariables {
 		err := variable.Validate()

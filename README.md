@@ -61,12 +61,13 @@ You can find a full example, including Traefik and a demo service, here: [_examp
 
 ### Environment Variables
 
-| Variable Name      | Description                              | Accepted Values                                 | Default Value              |
-|--------------------|------------------------------------------|-------------------------------------------------|----------------------------|
-| `AUTH_HOST`        | The host to use.                         | Any valid host (e.g.: `auth.example.com`)       |                            |
-| `PASSWORDS`        | The passwords that can be used to login. | See [Password Management](#password-management) |                            |
-| `DEBUG`            | Enable debug mode.                       | `true`, `false`                                 | `false`                    |
-| `LOGIN_PAGE_TITLE` | Title of the login page.                 | Any string.                                     | `Traefik Guardian - Login` |
+| Variable Name            | Description                              | Accepted Values                                 | Default Value                         |
+|--------------------------|------------------------------------------|-------------------------------------------------|---------------------------------------|
+| `AUTH_HOST`              | The host to use.                         | Any valid host (e.g.: `auth.example.com`)       |                                       |
+| `PASSWORDS`              | The passwords that can be used to login. | See [Password Management](#password-management) |                                       |
+| `DEBUG`                  | Enable debug mode.                       | `true`, `false`                                 | `false`                               |
+| `LOGIN_PAGE_TITLE`       | Title of the login page.                 | Any string.                                     | `Traefik Guardian - Login`            |
+| `LOGIN_PAGE_FOOTER_TEXT` | Custom footer text for the login page.   | Any string.                                     | `Copyright © 2022 - Traefik Guardian` |
 
 ## Password Management
 
