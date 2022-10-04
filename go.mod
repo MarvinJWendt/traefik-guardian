@@ -3,9 +3,10 @@ module github.com/MarvinJWendt/traefik-guardian
 go 1.18
 
 require (
+	github.com/MarvinJWendt/testza v0.4.3
 	github.com/gofiber/fiber/v2 v2.38.1
 	github.com/gofiber/template v1.7.1
-	github.com/pterm/pterm v0.12.48
+	github.com/pterm/pterm v0.12.49
 	github.com/sirupsen/logrus v1.9.0
 	golang.org/x/crypto v0.0.0-20220926161630-eccd6366d1be
 )
@@ -13,7 +14,6 @@ require (
 require (
 	atomicgo.dev/cursor v0.1.1 // indirect
 	atomicgo.dev/keyboard v0.2.8 // indirect
-	github.com/MarvinJWendt/testza v0.4.3 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/containerd/console v1.0.3 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
