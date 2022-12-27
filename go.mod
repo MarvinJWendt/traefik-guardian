@@ -4,8 +4,8 @@ go 1.18
 
 require (
 	github.com/MarvinJWendt/testza v0.5.1
-	github.com/gofiber/fiber/v2 v2.40.0
-	github.com/gofiber/template v1.7.2
+	github.com/gofiber/fiber/v2 v2.40.1
+	github.com/gofiber/template v1.7.3
 	github.com/pterm/pterm v0.12.51
 	github.com/sirupsen/logrus v1.9.0
 	golang.org/x/crypto v0.0.0-20220926161630-eccd6366d1be
