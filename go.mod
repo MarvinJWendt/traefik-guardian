@@ -6,7 +6,7 @@ require (
 	github.com/MarvinJWendt/testza v0.5.1
 	github.com/gofiber/fiber/v2 v2.40.0
 	github.com/gofiber/template v1.7.2
-	github.com/pterm/pterm v0.12.51
+	github.com/pterm/pterm v0.12.54
 	github.com/sirupsen/logrus v1.9.0
 	golang.org/x/crypto v0.0.0-20220926161630-eccd6366d1be
 )
@@ -14,7 +14,7 @@ require (
 require (
 	atomicgo.dev/assert v0.0.2 // indirect
 	atomicgo.dev/cursor v0.1.1 // indirect
-	atomicgo.dev/keyboard v0.2.8 // indirect
+	atomicgo.dev/keyboard v0.2.9 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/containerd/console v1.0.3 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -33,5 +33,5 @@ require (
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	golang.org/x/sys v0.0.0-20220928140112-f11e5e49a4ec // indirect
 	golang.org/x/term v0.0.0-20220919170432-7a66f970e087 // indirect
-	golang.org/x/text v0.4.0 // indirect
+	golang.org/x/text v0.6.0 // indirect
 )
